@@ -1,0 +1,15 @@
+{% extends 'events/base.html' %}
+
+
+{% block content %}
+
+    <center>
+        <h1>Add Venue to the Database</h1>
+        <br><br>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Submit" class="btn btn-secondary">
+        </form>
+    <center>
+
+{% endblock %}
