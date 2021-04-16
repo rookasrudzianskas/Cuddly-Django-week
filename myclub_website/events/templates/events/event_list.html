@@ -6,27 +6,35 @@
 
 
     {% for event in event_list %}
-<div class="card">
-  <div class="card-header">
-    {{ event }}
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Venue: {{ event.venue }}</h5>
-    <p class="card-text container">
+ <table class="table table-striped table-bordered table-dark table-hover">
+    <thead>
+        <tr>
+            <td style="font-weight: bold; color: #fff">{{event}} </td>
+        </tr>
+    </thead>
+     <tbody>
+     <tr>
+         <td><h5 class="card-title">Venue: {{ event.venue }}</h5></td>
+     </tr>
+                <tr><td><strong>Date: </strong> {{ event.event_date }}<br></td></tr>
+                <tr><td><strong>Venue: </strong> {{ event.venue }} <br></td></tr>
+                <tr><td><strong>Venue Website: </strong> {{ event.venue.web }}<br></td></tr>
+                <tr><td><strong>Manager: </strong> {{ event.manager }}<br></td></tr>
+                <tr><td><strong>Description: </strong> {{ event.description }}<br></td></tr>
+            <tr><td>
+                <strong>Attendees: </strong><br>
+            </td></tr>
+                        {% for user in event.attendees.all %}
+                            <tr>
+                                <td>
+                                     {{ user }}<br>
+                                </td>
+                            </tr>
+                        {% endfor %}
 
-            <strong>Date: </strong> {{ event.event_date }}<br>
-            <strong>Venue: </strong> {{ event.venue }} <br>
-            <strong>Venue Website: </strong> {{ event.venue.web }}<br>
-            <strong>Manager: </strong> {{ event.manager }}<br>
-            <strong>Description: </strong> {{ event.description }}<br>
-            <strong>Attendees: </strong><br>
-                    {% for user in event.attendees.all %}
-                         {{ user }}<br>
-                    {% endfor %}
-                <br>
-    </p>
-  </div>
-</div><br><br>
+
+     </tbody>
+ </table>
 
     {% endfor %}
 
