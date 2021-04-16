@@ -1,0 +1,14 @@
+{% extends 'events/base.html' %}
+
+
+{% block content %}
+
+<center>
+    <h1>Venues</h1><br><br>
+
+    {% for venue in venue_list %}
+        {{ venue }}<br>
+    {% endfor %}
+    <center>
+
+{% endblock %}
