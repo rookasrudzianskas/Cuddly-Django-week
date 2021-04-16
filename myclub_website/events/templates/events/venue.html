@@ -4,11 +4,24 @@
 {% block content %}
 
 <center>
-    <h1>Venues</h1><br><br>
-
+    <h1>Venues: </h1><br><br>
+<table class="table table-striped table-bordered table-dark table-hover">
+        <thead>
+            <tr>
+                <td style="color: white; font-weight: bold">Venue name:</td>
+            </tr>
+        </thead>
     {% for venue in venue_list %}
-        <a href="{% url 'show-venue' venue.id %}">{{ venue }}</a><br>
+
+        <tr>
+            <td>
+                <a href="{% url 'show-venue' venue.id %}" style="text-decoration: none; color: white">{{ venue }}</a><br>
+            </td>
+        </tr>
     {% endfor %}
+
+</table>
+
     <center>
 
 {% endblock %}
