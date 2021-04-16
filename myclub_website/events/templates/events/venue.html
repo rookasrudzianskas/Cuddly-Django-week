@@ -7,7 +7,7 @@
     <h1>Venues</h1><br><br>
 
     {% for venue in venue_list %}
-        {{ venue }}<br>
+        <a href="{% url 'show-venue' venue.id %}">{{ venue }}</a><br>
     {% endfor %}
     <center>
 
