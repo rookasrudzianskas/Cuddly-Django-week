@@ -19,7 +19,7 @@
                 <a href="{% url 'show-venue' venue.id %}" style="text-decoration: none; color: white">{{ venue }}</a><br>
             </td>
             <td align="right">
-                <a href="{% url 'update-venue' venue.id %}">Update</a>
+                <a href="{% url 'update-venue' venue.id %}" class="btn btn-outline-secondary btn-sm">Update</a>
             </td>
         </tr>
     {% endfor %}
