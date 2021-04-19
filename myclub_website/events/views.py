@@ -11,8 +11,10 @@ from django.http import HttpResponseRedirect
 
 def update_venue(request, venue_id):
     venue = Venue.objects.get(pk=venue_id)
+    form = VenueForm(request.POST or None)
     return render(request, 'events/update_venue.html', {
         'venue': venue,
+        'form': form,
     })
 
 
