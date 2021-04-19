@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <td style="color: white; font-weight: bold">Venue name:</td>
+                <td style="color: white; font-weight: bold">Update?</td>
             </tr>
         </thead>
     {% for venue in venue_list %}
@@ -16,6 +17,9 @@
         <tr>
             <td>
                 <a href="{% url 'show-venue' venue.id %}" style="text-decoration: none; color: white">{{ venue }}</a><br>
+            </td>
+            <td align="right">
+                <a href="{% url 'update-venue' venue.id %}">Update</a>
             </td>
         </tr>
     {% endfor %}

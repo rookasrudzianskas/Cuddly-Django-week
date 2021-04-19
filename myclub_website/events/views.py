@@ -9,6 +9,13 @@ from django.http import HttpResponseRedirect
 
 # Create your views here.
 
+def update_venue(request, venue_id):
+    venue = Venue.objects.get(pk=venue_id)
+    return render(request, 'events/update_venue.html', {
+        'venue': venue,
+    })
+
+
 def search_venue(request):
     if request.method == "POST":
         searched = request.POST['searched']
