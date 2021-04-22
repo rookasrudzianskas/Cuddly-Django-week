@@ -9,7 +9,7 @@ class EventForm(ModelForm):
         fields = ('name', 'event_date', 'venue', 'manager', 'attendees', 'description')
         labels = {
             'name': '',
-            'event_date': '',
+            'event_date': 'YYYY-MM-DD HH:MM:SS',
             'venue': 'Venue',
             'manager': 'Manager',
             'attendees': 'Attendees',
