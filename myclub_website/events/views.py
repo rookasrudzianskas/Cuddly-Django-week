@@ -9,6 +9,12 @@ from django.http import HttpResponseRedirect
 
 # Create your views here.
 
+def delete_event(request, event_id):
+    event = Event.objects.get(pk=event_id)
+    event.delete()
+    return redirect('list-events')
+
+
 def add_event(request):
     submitted = False
     if request.method == "POST":
