@@ -32,9 +32,12 @@
                             </tr>
                         {% endfor %}
 <tr>
-    <td><a href="{% url 'update-event' event.id %}" style="text-decoration: none;"><div class="card-footer text-muted" style="text-align: center; color: white; font-weight: bold; z-index: 10;">Update Event</div></a></td>
-    <td><a href="{% url 'delete-event' event.id %}" style="text-decoration: none;"><div class="card-footer text-muted" style="text-align: center; color: white; font-weight: bold; z-index: 10;">Delete Event</div></a></td>
+    <td><a href="{% url 'update-event' event.id %}" style="text-decoration: none;"><div class="card-footer " style="text-align: center; color: white; font-weight: bold; z-index: 10;">Update Event</div></a></td>
 </tr>
+     <tr>
+         <td><a href="{% url 'delete-event' event.id %}" style="text-decoration: none;"><div class="card-footer text-danger" style="text-align: center; color: white; font-weight: bold; z-index: 10;">Delete Event</div></a></td>
+
+     </tr>
 
      </tbody>
  </table>
