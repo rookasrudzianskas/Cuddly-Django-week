@@ -9,7 +9,8 @@
         <thead>
             <tr>
                 <td style="color: white; font-weight: bold">Venue name:</td>
-                <td style="color: white; font-weight: bold">Update?</td>
+                <td style="color: white; font-weight: bold; margin-right: 50px;">Update?</td>
+                <td style="color: white; font-weight: bold">Delete?</td>
             </tr>
         </thead>
     {% for venue in venue_list %}
@@ -18,8 +19,12 @@
             <td>
                 <a href="{% url 'show-venue' venue.id %}" style="text-decoration: none; color: white">{{ venue }}</a><br>
             </td>
-            <td align="right">
+            <td align="center">
                 <a href="{% url 'update-venue' venue.id %}" class="btn btn-outline-secondary btn-sm">Update</a>
+            </td>
+
+             <td align="center">
+                <a href="{% url 'delete-venue' venue.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
             </td>
         </tr>
     {% endfor %}
