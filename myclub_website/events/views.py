@@ -5,6 +5,20 @@ from datetime import datetime
 from .models import Event, Venue
 from .forms import VenueForm, EventForm
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
+
+
+# genrate text file from venues
+
+def venue_text(request):
+    response = HttpResponse(content_type='text/plain')
+    response['Content-Disposition'] = 'attachment; filename=venues.txt'
+
+    lines = ["This is line 1\n ", "This is on the line two \n", "this is line three \n"]
+#      write to the text file
+
+    response.writelines(lines)
+    return response
 
 
 # Create your views here.
