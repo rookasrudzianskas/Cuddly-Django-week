@@ -12,9 +12,19 @@ from django.http import HttpResponse
 
 def venue_text(request):
     response = HttpResponse(content_type='text/plain')
-    response['Content-Disposition'] = 'attachment; filename=venues.txt'
+    response['Content-Disposition'] = 'attachment; filename=venues-list.txt'
 
-    lines = ["This is line 1\n ", "This is on the line two \n", "this is line three \n"]
+    # designate the mode
+    # takes everything from venue object
+    venues = Venue.objects.all()
+
+    lines = []
+    # loop through it
+    for venue in venues:
+        # adds everything to lines array
+        lines.append(f'{venue.name}\n{venue.address}\n{venue.phone}\n{venue.zip_code}\n{venue.phone}\n{venue.web}\n{venue.email_address}\n\n')
+    # lines = ["This is line 1\n ", "This is on the line two \n", "this is line three \n"]
+
 #      write to the text file
 
     response.writelines(lines)
