@@ -6,6 +6,31 @@ from .models import Event, Venue
 from .forms import VenueForm, EventForm
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
+import csv
+
+
+# venue csv
+def venue_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=venues-list.csv'
+
+    # create a csv writer to
+
+    writer = csv.writer(response)
+
+    # designate the mode
+    # takes everything from venue object
+    venues = Venue.objects.all()
+
+    # Add column headings to the csv files
+
+    writer.writerow('Venue Name', 'Address', 'Zip Code', 'Phone', "Web Address", "Email Address")
+
+    for venue in venues:
+        writer.writerow(
+            [venue.name, venue.address, venue.phone, venue.zip_code, venue.phone, venue.web, venue.email_address])
+
+    return response
 
 
 # genrate text file from venues
@@ -22,10 +47,11 @@ def venue_text(request):
     # loop through it
     for venue in venues:
         # adds everything to lines array
-        lines.append(f'{venue.name}\n{venue.address}\n{venue.phone}\n{venue.zip_code}\n{venue.phone}\n{venue.web}\n{venue.email_address}\n\n')
+        lines.append(
+            f'{venue.name}\n{venue.address}\n{venue.phone}\n{venue.zip_code}\n{venue.phone}\n{venue.web}\n{venue.email_address}\n\n')
     # lines = ["This is line 1\n ", "This is on the line two \n", "this is line three \n"]
 
-#      write to the text file
+    #      write to the text file
 
     response.writelines(lines)
     return response
