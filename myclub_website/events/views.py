@@ -24,7 +24,7 @@ def venue_csv(request):
 
     # Add column headings to the csv files
 
-    writer.writerow('Venue Name', 'Address', 'Zip Code', 'Phone', "Web Address", "Email Address")
+    writer.writerow(['Venue Name', 'Address', 'Phone number', 'Zip Code', "Phone Number", "Web Address", "Email"])
 
     for venue in venues:
         writer.writerow(
