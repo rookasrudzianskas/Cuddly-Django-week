@@ -30,7 +30,26 @@
     {% endfor %}
 
 </table>
+    <!--    <br>{{ venues.has_previous }}-->
+<!--    <br>{{ venues.has_next }}-->
+<!--    <br>{{ venues.number }}-->
+<!--    <br>{{ venues.paginator.num_pages }}-->
+
+
 
     <center>
+
+        {% if venues.has_previous %}
+            <a href="?page=1">&laquo First</a>
+            <a href="?page={{ venues.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        Page {{ venues.number }} of {{ venues.paginator.num_pages }}
+
+        {% if venues.has_next %}
+        <a href="?page={{venues.next_page_number }}">Next</a>
+        <a href="?page={{ venues.paginator.num_pages }}">Last &raquo</a>
+        {% endif%}
+
 
 {% endblock %}

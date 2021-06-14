@@ -7,6 +7,7 @@ from .forms import VenueForm, EventForm
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 import csv
+from django.core.paginator import Paginator
 
 from django.http import FileResponse
 import io
@@ -189,10 +190,16 @@ def show_venue(request, venue_id):
 
 
 def list_venues(request):
-    venue_list = Venue.objects.all().order_by('?')
+    # venue_list = Venue.objects.all().order_by('?')
+    venue_list = Venue.objects.all()
+    # Setup pagination here
+    p = Paginator(Venue.objects.all(), 2)
+    page = request.GET.get('page')
+    venues = p.get_page(page)
 
     return render(request, 'events/venue.html', {
-        'venue_list': venue_list,
+        'venues': venues,
+        "venue_list": venue_list,
     })
 
 
