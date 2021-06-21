@@ -52,15 +52,15 @@
         </nav>
 
         {% if venues.has_previous %}
-            <li class="page-item"><a href="?page=1">&laquo First</a></li>
-            <li class="page-item"><a href="?page={{ venues.previous_page_number }}">Previous</a></li>
+            <li class="page-item"><a href="?page=1 class="page-link"">&laquo First</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ venues.previous_page_number }}">Previous</a></li>
         {% endif %}
 
         <li class="page-item">Page {{ venues.number }} of {{ venues.paginator.num_pages }}</li>
 
         {% if venues.has_next %}
-        <li class="page-item"><a href="?page={{venues.next_page_number }}">Next</a></li>
-        <li class="page-item"><a href="?page={{ venues.paginator.num_pages }}">Last &raquo</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{venues.next_page_number }}">Next</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ venues.paginator.num_pages }}">Last &raquo</a></li>
         {% endif%}
 
 
