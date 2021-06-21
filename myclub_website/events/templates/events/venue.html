@@ -44,7 +44,6 @@
 
         <nav aria-label="Page navigation example">
             <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
                 <li class="page-item"><a class="page-link" href="#">1</a></li>
                 <li class="page-item"><a class="page-link" href="#">2</a></li>
                 <li class="page-item"><a class="page-link" href="#">3</a></li>
@@ -53,15 +52,15 @@
         </nav>
 
         {% if venues.has_previous %}
-            <a href="?page=1">&laquo First</a>
-            <a href="?page={{ venues.previous_page_number }}">Previous</a>
+            <li class="page-item">&laquo First</li>
+            <li class="page-item"><a href="?page={{ venues.previous_page_number }}">Previous</a></li>
         {% endif %}
 
         Page {{ venues.number }} of {{ venues.paginator.num_pages }}
 
         {% if venues.has_next %}
-        <a href="?page={{venues.next_page_number }}">Next</a>
-        <a href="?page={{ venues.paginator.num_pages }}">Last &raquo</a>
+        <li class="page-item"><a href="?page={{venues.next_page_number }}">Next</a></li>
+        <li class="page-item"><a href="?page={{ venues.paginator.num_pages }}">Last &raquo</a></li>
         {% endif%}
 
 
