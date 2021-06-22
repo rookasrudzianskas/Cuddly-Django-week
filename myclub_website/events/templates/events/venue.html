@@ -43,7 +43,7 @@
 <!--        bootstrap-->
 
         <nav aria-label="Page navigation example">
-            <ul class="pagination">
+            <ul class="pagination justify-content-center">
         {% if venues.has_previous %}
             <li class="page-item"><a href="?page=1" class="page-link">&laquo First</a></li>
             <li class="page-item"><a class="page-link" href="?page={{ venues.previous_page_number }}">Previous</a></li>
@@ -52,7 +52,6 @@
                 {% for i in nums %}
                 <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{forloop.counter}}</a></li>
                 {% endfor %}
-
 <!--        <li class="page-item"><a href="#" class="page-link"> Page {{ venues.number }} of {{ venues.paginator.num_pages }}</a></li>-->
 
         {% if venues.has_next %}
@@ -63,3 +62,5 @@
         </nav>
 
 {% endblock %}
+                        </center>
+
