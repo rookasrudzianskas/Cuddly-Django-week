@@ -49,7 +49,7 @@
             <li class="page-item"><a class="page-link" href="?page={{ venues.previous_page_number }}">Previous</a></li>
         {% endif %}
 
-        <li class="page-item"><a href="#" class="page-link"> Page {{ venues.number }} of {{ venues.paginator.num_pages }}</a></li>
+        <li class="page-item disabled"><a href="#" class="page-link"> Page {{ venues.number }} of {{ venues.paginator.num_pages }}</a></li>
 
         {% if venues.has_next %}
         <li class="page-item"><a class="page-link" href="?page={{venues.next_page_number }}">Next</a></li>
