@@ -11,3 +11,5 @@ urlpatterns = [
 admin.site.site_header = "My Club Administration Page"
 admin.site.site_title = "My Club"
 admin.site.index_title = "Welcome to Admin area 🚀"
+
+#  DONE
