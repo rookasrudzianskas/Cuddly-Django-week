@@ -6,5 +6,6 @@ urlpatterns = [
     path('', include('events.urls')),
 ]
 
-
 #  customization
+
+admin.site_header = "My Club Administration Page"
