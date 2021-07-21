@@ -23,6 +23,6 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-
     messages.success(request, "There was an error logout, try again...")
+    return redirect("home")
 
