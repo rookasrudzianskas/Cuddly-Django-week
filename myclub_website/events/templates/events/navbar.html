@@ -27,17 +27,30 @@
               </li>
 
 
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'venue_text'%}">Venue text file</a>
-              </li>
+               <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Download
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-             <li class="nav-item">
-                <a class="nav-link" href="{% url 'venue_csv'%}">Venue CSV file</a>
-              </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'venue_text'%}">Venue text file</a>
+                  </li>
+                 <li>
+                    <a class="dropdown-item" href="{% url 'venue_csv'%}">Venue CSV file</a>
+                  </li>
+                         <li>
+                    <a class="dropdown-item" href="{% url 'venue_pdf'%}">Venue PDF file</a>
+                  </li>
 
-                     <li class="nav-item">
-                <a class="nav-link" href="{% url 'venue_pdf'%}">Venue PDF file</a>
-              </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+
+              </ul>
+            </li>
+
+
+
 
           {% if user.is_authenticated %}
                      <li class="nav-item">
