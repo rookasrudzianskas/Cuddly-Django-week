@@ -3,8 +3,6 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
-
-
 class Venue(models.Model):
     name = models.CharField('Venue name', max_length=120)
     address = models.CharField(max_length=300)
