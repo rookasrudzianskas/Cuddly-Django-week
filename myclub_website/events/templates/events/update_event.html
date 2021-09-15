@@ -3,6 +3,11 @@
 
 {% block content %}
 
+   {% if user.is_authenticated %}
+        {% if user == event.manager %}
+
+
+
     <h1>Update Event...</h1>
         <br>
     <form action="" method="POST">
@@ -11,6 +16,21 @@
         <br>
         <input type="submit" value="Update" class="btn btn-secondary">
     </form>
+{% else %}
+    <h1>Access denied. Only the events managers can update this event.</h1>
+<br>
+Logged in user: {{ user }}
+<br>
+Event manager: {{ event.manager }}
+<br>
+{% endif %}
+
+{% else %}
+
+    <h1>Sorry you must be logged in to view this page! 🔥</h1>
+    <a class="nav-link" href="{% url 'login'%}">Login</a>
+            {% endif %}
+
 
 
 

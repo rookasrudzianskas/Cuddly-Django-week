@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
 
+# Create your models here.
 
 
 class Venue(models.Model):
@@ -11,7 +11,7 @@ class Venue(models.Model):
     zip_code = models.CharField("Zip Code", max_length=15)
     phone = models.CharField('Contact Phone', max_length=25, blank=True)
     web = models.URLField('Website Address', blank=True)
-    email_address = models.EmailField('Email Address',  blank=True)
+    email_address = models.EmailField('Email Address', blank=True)
 
     def __str__(self):
         return self.name

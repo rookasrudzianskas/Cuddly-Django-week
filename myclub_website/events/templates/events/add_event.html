@@ -3,6 +3,9 @@
 
 {% block content %}
 
+          {% if user.is_authenticated %}
+
+
     <h1>Add event: </h1><br><br>
          {% if submitted %}
 
@@ -20,5 +23,12 @@
             {% endif %}
 
     <br><br>
+
+{% else %}
+
+    <h1>Sorry you must be logged in to view this page! 🔥</h1>
+    <a class="nav-link" href="{% url 'login'%}">Login</a>
+            {% endif %}
+
 
 {% endblock %}

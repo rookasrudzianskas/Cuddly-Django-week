@@ -7,24 +7,53 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'home' '2021' 'March' %}">March</a>
+          <a class="nav-link" href="{% url 'home' '2021' 'March' %}">Calendar</a>
         </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'list-events'%}">Events</a>
+
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Events
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" href="{% url 'list-events'%}">All Events</a>
+                </li>
+                {% if user.is_authenticated %}
+
+                <li>
+                    <a class="dropdown-item" href="{% url 'add-event'%}">Add Event</a>
+                  </li>
+
+                {% endif %}
+
+              </ul>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'add-event'%}">Add Event</a>
+                 <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Venues
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                 <li>
+                <a class="dropdown-item" href="{% url 'list-venues'%}">All Venues</a>
+              </li>
+                {% if user.is_authenticated %}
+
+              <li>
+                <a class="dropdown-item" href="{% url 'add-venue'%}">Add Venue</a>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'add-venue'%}">Add Venue</a>
-              </li>
+             {% endif %}
 
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'list-venues'%}">Venues</a>
-              </li>
+
+              </ul>
+            </li>
+
+
+
+
+
 
 
                <li class="nav-item dropdown">
@@ -44,7 +73,7 @@
                   </li>
 
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="#">Download Rokas Resume</a></li>
 
               </ul>
             </li>
@@ -57,6 +86,10 @@
                 <a class="nav-link" href="{% url 'logout'%}">Logout</a>
               </li>
           {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'register_user'%}">Register</a>
+              </li>
+
                           <li class="nav-item">
                 <a class="nav-link" href="{% url 'login'%}">Login</a>
               </li>
@@ -74,3 +107,8 @@
     </div>
   </div>
 </nav>
+
+
+<!-- new updates and some features -->
+
+<!--starting for today-->
