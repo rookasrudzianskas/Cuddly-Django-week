@@ -136,12 +136,12 @@ def add_event(request):
                 return HttpResponseRedirect('/add_event?submitted=True')
         else:
             form = EventForm(request.POST)
-            event = form.save(commit=False)
-            event.manager = request.user
-            event.save()
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/add_event?submitted=True')
+            if form.is_valid():
+                # form.save()
+                event = form.save(commit=False)
+                event.manager = request.user
+                event.save()
+                return HttpResponseRedirect('/add_event?submitted=True')
     else:
         # just going to the page, not submitting,
         if request.user.is_superuser:
