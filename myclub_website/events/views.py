@@ -3,7 +3,7 @@ import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
 from .models import Event, Venue
-from .forms import VenueForm, EventForm
+from .forms import VenueForm, EventForm, EventFormAdmin
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 import csv
@@ -14,6 +14,7 @@ import io
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
+
 
 
 # generate the pdf file for venues
@@ -128,7 +129,10 @@ def delete_event(request, event_id):
 def add_event(request):
     submitted = False
     if request.method == "POST":
-        form = EventForm(request.POST)
+        if request.user.is_superuser:
+            form = EventFormAdmin(request.POST)
+        else:
+            form = EventForm(request.POST)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/add_event?submitted=True')
