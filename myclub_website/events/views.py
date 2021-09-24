@@ -131,13 +131,23 @@ def add_event(request):
     if request.method == "POST":
         if request.user.is_superuser:
             form = EventFormAdmin(request.POST)
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect('/add_event?submitted=True')
         else:
             form = EventForm(request.POST)
+            event = form.save(commit=False)
+            event.manager = request.user
+            event.save()
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/add_event?submitted=True')
     else:
-        form = EventForm
+        # just going to the page, not submitting,
+        if request.user.is_superuser:
+            form = EventFormAdmin
+        else:
+            form = EventForm
         if 'submitted' in request.GET:
             submitted = True
 
