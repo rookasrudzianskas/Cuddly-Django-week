@@ -3,7 +3,8 @@ from django.forms import ModelForm
 from .models import Venue, Event
 
 
-class EventForm(ModelForm):
+# admin super user
+class EventFormAdmin(ModelForm):
     class Meta:
         model = Event
         fields = ('name', 'event_date', 'venue', 'manager', 'attendees', 'description')
