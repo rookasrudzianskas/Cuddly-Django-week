@@ -14,6 +14,7 @@ import io
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
+from django.contrib import messages
 
 
 # generate the pdf file for venues
