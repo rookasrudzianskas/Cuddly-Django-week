@@ -121,8 +121,11 @@ def delete_venue(request, venue_id):
 
 def delete_event(request, event_id):
     event = Event.objects.get(pk=event_id)
-    event.delete()
-    return redirect('list-events')
+    if request.user == event.manager:
+        event.delete()
+        return redirect('list-events')
+    else:
+        return redirect('list-events')
 
 
 def add_event(request):
