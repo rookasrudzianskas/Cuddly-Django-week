@@ -16,7 +16,6 @@ from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
 
 
-
 # generate the pdf file for venues
 
 def venue_pdf(request):
@@ -228,7 +227,7 @@ def add_venue(request):
         form = VenueForm(request.POST)
         if form.is_valid():
             venue = form.save(commit=False)
-            venue.owner = request.user.id # logged in user
+            venue.owner = request.user.id  # logged in user
             venue.save()
             # form.save()
             return HttpResponseRedirect('/add_venue?submitted=True')
