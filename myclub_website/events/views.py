@@ -127,7 +127,7 @@ def delete_event(request, event_id):
         messages.success(request, "Event deleted")
         return redirect('list-events')
     else:
-        messages.success(request, "Event deleted")
+        messages.success(request, "You are not authorized to delete this event")
         return redirect('list-events')
 
 
