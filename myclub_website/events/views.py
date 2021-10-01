@@ -124,8 +124,10 @@ def delete_event(request, event_id):
     event = Event.objects.get(pk=event_id)
     if request.user == event.manager:
         event.delete()
+        messages.success(request, "Event deleted")
         return redirect('list-events')
     else:
+        messages.success(request, "Event deleted")
         return redirect('list-events')
 
 
