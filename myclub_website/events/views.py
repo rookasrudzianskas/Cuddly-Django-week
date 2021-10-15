@@ -212,6 +212,7 @@ def show_venue(request, venue_id):
     venue_owner = User.objects.get(pk=venue.owner)
     return render(request, 'events/show_venue.html', {
         'venue': venue,
+        'venue_owner': venue_owner,
     })
 
 
