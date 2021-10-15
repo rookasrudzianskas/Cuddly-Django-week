@@ -210,11 +210,9 @@ def search_venue(request):
 def show_venue(request, venue_id):
     venue = Venue.objects.get(pk=venue_id)
     venue_owner = User.objects.get(pk=venue.owner)
-    return render(request, 'events/venue.html', {
-        # could be the show_venue.html
-        'venue': venue,
-        'venue_owner': venue_owner,
-    })
+    return render(request, 'events/show_venue.html',
+                  {'venue': venue,
+                   'venue_owner': venue_owner})
 
 
 def list_venues(request):
