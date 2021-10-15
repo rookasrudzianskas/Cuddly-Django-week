@@ -289,5 +289,3 @@ def home(request, year=datetime.now().year, month=datetime.now().strftime('%B'))
         "current_year": current_year,
         "time": time,
     })
-
-#  done super easy
