@@ -25,7 +25,10 @@ from django.contrib import messages
 
 def my_events(request):
     if request.user.is_authenticated:
-        return render(request, 'events/my_events.html', {})
+        me = request.user.id
+        return render(request, 'events/my_events.html', {
+            "me": me,
+        })
 
     else:
         messages.success(request, 'You are not good to go!')
