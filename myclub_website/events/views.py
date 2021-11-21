@@ -232,7 +232,7 @@ def search_events(request):
         })
 
     else:
-        return render(request, 'events/search_venues.html', {
+        return render(request, 'events/search_events.html', {
 
         })
 

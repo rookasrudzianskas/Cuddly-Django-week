@@ -3,7 +3,14 @@
 
 {% block content %}
 
-<center>
+<form class="d-flex" method="POST" action="{% url 'search_events' %}">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Search Events" name="searched" aria-label="Search">
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+      </form>
+<br>
+
+<!--<div style="text-align: center;">-->
     {% if searched %}
 
         <h1>You searched for:</h1>
@@ -16,7 +23,7 @@
         </thead>
         {% for event in events %}
                 <tr>
-                    <td><a href="{% url 'show-venue' venue.id %}" style="text-decoration: none; color: white">{{ event }}</a><br></td>
+                    <td><a href="{% url 'search_events' event.id %}" style="text-decoration: none; color: white">{{ event }}</a><br></td>
                 </tr>
         {% endfor %}
     </table>
@@ -27,6 +34,6 @@
     {% endif %}
 
 
-    <center>
+<!--    <center>-->
 
 {% endblock %}
