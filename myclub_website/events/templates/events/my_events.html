@@ -8,7 +8,48 @@
             <br>
 
     {% for event in events %}
-        {{ event }}<br>
+        <table class="table table-striped table-bordered table-dark table-hover">
+    <thead>
+        <tr>
+            <td style="font-weight: bold; color: #fff">{{event}} </td>
+        </tr>
+    </thead>
+     <tbody>
+     <tr>
+         <td><h5 class="card-title">Venue: {{ event.venue }}</h5></td>
+     </tr>
+                <tr><td><strong>Date: </strong> {{ event.event_date }}<br></td></tr>
+                <tr><td><strong>Venue: </strong> {{ event.venue }} <br></td></tr>
+                <tr><td><strong>Venue Website: </strong> {{ event.venue.web }}<br></td></tr>
+                <tr><td><strong>Manager: </strong> {{ event.manager }}<br></td></tr>
+                <tr><td><strong>Description: </strong> {{ event.description }}<br></td></tr>
+            <tr><td>
+                <strong>Attendees: </strong><br>
+            </td></tr>
+                        {% for user in event.attendees.all %}
+                            <tr>
+                                <td>
+                                     {{ user }}<br>
+                                </td>
+                            </tr>
+                        {% endfor %}
+   {% if user.is_authenticated %}
+     {% if user == event.manager %}
+<tr>
+
+    <td><a href="{% url 'update-event' event.id %}" style="text-decoration: none;"><div class="card-footer " style="text-align: center; color: white; font-weight: bold; z-index: 10;">Update Event</div></a></td>
+
+
+</tr>
+     <tr>
+         <td><a href="{% url 'delete-event' event.id %}" style="text-decoration: none;"><div class="card-footer text-danger" style="text-align: center; color: white; font-weight: bold; z-index: 10;">Delete Event</div></a></td>
+
+     </tr>
+     {% endif %}
+         {% endif %}
+
+     </tbody>
+ </table>
     {% endfor %}
     </div>
 
