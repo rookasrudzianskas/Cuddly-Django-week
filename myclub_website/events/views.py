@@ -222,6 +222,21 @@ def search_venue(request):
         })
 
 
+def search_events(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        events = Event.objects.filter(name__contains=searched)
+        return render(request, 'events/search_events.html', {
+            'searched': searched,
+            'events': events,
+        })
+
+    else:
+        return render(request, 'events/search_venues.html', {
+
+        })
+
+
 def show_venue(request, venue_id):
     venue = Venue.objects.get(pk=venue_id)
     venue_owner = User.objects.get(pk=venue.owner)

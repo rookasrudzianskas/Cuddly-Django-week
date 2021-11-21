@@ -14,9 +14,9 @@
             <td style="font-weight: bold; color: #fff">Your search was: </td>
         </tr>
         </thead>
-        {% for venue in venues %}
+        {% for event in events %}
                 <tr>
-                    <td><a href="{% url 'show-venue' venue.id %}" style="text-decoration: none; color: white">{{ venue }}</a><br></td>
+                    <td><a href="{% url 'show-venue' venue.id %}" style="text-decoration: none; color: white">{{ event }}</a><br></td>
                 </tr>
         {% endfor %}
     </table>
