@@ -28,7 +28,7 @@ def my_events(request):
         me = request.user.id
         events = Event.objects.filter(attendees=me)
         return render(request, 'events/my_events.html', {
-
+            'events': events
         })
 
     else:

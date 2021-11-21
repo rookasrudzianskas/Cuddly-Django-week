@@ -3,11 +3,13 @@
 
 {% block content %}
 
-<div style="text-align: center;">
+<div style="text-align: left;">
     <h1>My events</h1>
-    {{ me }}
-            <br><br>
+            <br>
 
+    {% for event in events %}
+        {{ event }}<br>
+    {% endfor %}
     </div>
 
 {% endblock %}
