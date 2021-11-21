@@ -26,8 +26,9 @@ from django.contrib import messages
 def my_events(request):
     if request.user.is_authenticated:
         me = request.user.id
+        events = Event.objects.filter(attendees=me)
         return render(request, 'events/my_events.html', {
-            "me": me,
+
         })
 
     else:
