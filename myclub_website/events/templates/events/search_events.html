@@ -1,39 +1,78 @@
 {% extends 'events/base.html' %}
 
-
 {% block content %}
 
-<form class="d-flex" method="POST" action="{% url 'search_events' %}">
-        {% csrf_token %}
-        <input class="form-control me-2" type="search" placeholder="Search Events" name="searched" aria-label="Search">
-        <button class="btn btn-outline-secondary" type="submit">Search</button>
-      </form>
-<br>
-
-<!--<div style="text-align: center;">-->
+<div class="card bg-dark">
+  <div class="card-header text-white">
     {% if searched %}
+		You Searched For {{ searched }}
+	{% else %}
+		Search Events...
+	{% endif %}
+  </div>
+  <div class="card-body bg-dark">
 
-        <h1>You searched for:</h1>
-    <br>
-    <table class="table table-striped table-bordered table-dark table-hover">
-        <thead>
-        <tr>
-            <td style="font-weight: bold; color: #fff">Your search was: </td>
-        </tr>
-        </thead>
-        {% for event in events %}
-                <tr>
-                    <td><a href="{% url 'search_events' event.id %}" style="text-decoration: none; color: white">{{ event }}</a><br></td>
-                </tr>
-        {% endfor %}
-    </table>
-    {% else %}
+<form method=POST action="{% url 'search_events' %}">
+        {% csrf_token %}
 
-        <h1>Hey! You forgot to search for the Venue!</h1>
+        <input class="form-control me-2" type="search" placeholder="Search Venues" aria-label="Search" name="searched">
+        <br/>
+        <button class="btn btn-outline-light" type="submit">Search</button>
+      </form>
 
+</div></div>
+
+
+		<br/>
+		{% for event in events %}
+			<div class="card bg-dark">
+  <div class="card-header text-white">
+    {{ event }}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title text-white">Venue: {{ event.venue }}</h5>
+    <p class="card-text text-white">
+    	<ul>
+<li class="text-white">Date: {{ event.event_date }}</li>
+
+<li class="text-white">Venue Website: {{ event.venue.web }}</li>
+<li class="text-white">Manager: {{ event.manager }}</li>
+<li class="text-white">Description: {{ event.description }}</li>
+	<li class="text-white">Attendees:<br/>
+	{% for user in event.attendees.all %}
+{{ user }}<br/>
+	{% endfor %}
+	</li>
+	</ul>
+
+
+
+    </p>
+  </div>
+  {% if user.is_authenticated %}
+    {% if user == event.manager %}
+      <div class="card-footer text-muted">
+
+        <a href="{% url 'update-event' event.id %}" class="btn btn-outline-secondary btn-sm">Update Event</a>
+
+        <a href="{% url 'delete-event' event.id %}" class="btn btn-outline-danger btn-sm">Delete Event</a>
+
+      </div>
     {% endif %}
+  {% endif %}
+</div>
 
 
-<!--    <center>-->
+
+
+
+	<br/><br/>
+		{% endfor %}
+
+
+
+
+
+
 
 {% endblock %}
