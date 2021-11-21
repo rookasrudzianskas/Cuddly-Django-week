@@ -21,6 +21,17 @@ from django.contrib import messages
 
 # generate the pdf file for venues
 
+# create my events page
+
+def my_events(request):
+    if request.user.is_authenticated:
+        return render(request, 'events/my_events.html', {})
+
+    else:
+        messages.success(request, 'You are not good to go!')
+        return redirect('home')
+
+
 def venue_pdf(request):
     # create Bytestream, buffer
     buf = io.BytesIO()
